@@ -1,8 +1,10 @@
+import 'package:beetracker/pages/home_page/home_page.dart';
 import 'package:beetracker/utils/colors.dart';
 import 'package:flutter/material.dart';
 
 import '../../../componets/custom_button.dart';
 import '../../../componets/custom_input.dart';
+import '../../../componets/custom_logowithbg.dart';
 import '../../../componets/custom_text.dart';
 import '../../../componets/custom_text_form_field.dart';
 import '../../../utils/util_functions.dart';
@@ -44,23 +46,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        color: kWhite,
-                        borderRadius: BorderRadius.circular(100),
-                      ),
-                      width: 100,
-                      height: 100,
-                      child: Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: Image.asset(
-                          "assets/images/logo.png",
-
-                          // width: 400,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
+                    LogoWithBgWidget(),
                     const CustomText(
                       text: "SignIn",
                       fontSize: 25,
@@ -71,7 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     CustomTextFormField(
                       lable: "Email",
                       controller: _email,
-                      icon: Icons.email,
+                      prefixIcon: Icons.email,
                     ),
                     CustomInput(
                       controller: _email,
@@ -126,7 +112,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       // isLoading: value.isLoading,
                       text: "Sign In",
                       color: kMainColor,
-                      onTap: () async {},
+                      onTap: () async {
+                        UtilFunctions.pushRemoveNavigation(
+                            context, const HomeScreen());
+                      },
                     ),
                     const SizedBox(height: 20),
                     Row(
@@ -166,3 +155,4 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
+

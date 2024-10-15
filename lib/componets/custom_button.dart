@@ -37,6 +37,13 @@ class CustomButton extends StatelessWidget {
           decoration: BoxDecoration(
             color: color,
             borderRadius: BorderRadius.circular(100),
+            boxShadow: const [
+              BoxShadow(
+                color: Colors.grey,
+                offset: Offset(2, 5), //(x,y)
+                blurRadius: 6.0,
+              ),
+            ],
           ),
           child: Center(
             child: isLoading

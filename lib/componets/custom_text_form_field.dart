@@ -39,12 +39,13 @@ class CustomTextFormField extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Column(
         children: [
+          const SizedBox(height: 2),
           Row(
             children: [
               CustomText(
                 text: lable,
                 fontSize: fontsize,
-                fontWeight: FontWeight.bold,
+                fontWeight: FontWeight.w400,
               ),
             ],
           ),

@@ -29,7 +29,7 @@ class CustomInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(10.0),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       child: Column(
         children: [
           Row(
@@ -37,7 +37,7 @@ class CustomInput extends StatelessWidget {
               CustomText(
                 text: lableText,
                 fontSize: fontsize!,
-                fontWeight: FontWeight.bold,
+                fontWeight: FontWeight.w400,
               ),
             ],
           ),
