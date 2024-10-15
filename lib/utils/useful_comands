@@ -1,0 +1,52 @@
+# File with heading
+
+This is a file with a top-level heading
+
+////////////Build model auto(New)/////////
+flutter packages pub run build_runner build
+
+//////build model auto(old)///////////
+flutter packages pub run build_runner build --delete-conflicting-outputs
+
+/////////Change Logo/////////////////
+flutter pub run flutter_launcher_icons:main
+
+/////////Cache repair/////////////////
+flutter pub cache repair
+
+///////////Clean code//////////////
+flutter clear
+
+////////////get Packages//////////////
+flutter pub get
+
+/////////Get App build//////////////////
+flutter build apk
+flutter build apk --split-per-abi
+
+///////////Display drive image
+<https://drive.google.com/uc?export=view&id=Add> your link Id
+
+//Get appbundel for playstore
+flutter build appbundle
+
+static const MAIN1 =
+      '<https://hub.abansgroup.com/scm2/>'; //'<http://hub.abansgroup.com:92/>';
+  static const MAIN2 =
+      '<https://hub.abansgroup.com/scm2comm/>'; //'<http://hub.abansgroup.com:94/>';
+
+static const TOKEN_API_92 =
+      '<https://hub.abansgroup.com/scm2/token>'; //'<http://hub.abansgroup.com:92/token>';
+  //static const TOKEN_API_94 =
+      '<https://hub.abansgroup.com/scm2comm/token>'; //'<http://hub.abansgroup.com:94/token>';
+
+//
+1300751
+
+1300842
+
+1300799
+
+1300885
+
+ABC@123///
