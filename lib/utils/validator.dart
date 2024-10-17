@@ -1,10 +1,12 @@
+// ignore_for_file: prefer_is_empty, curly_braces_in_flow_control_structures, avoid_print
+
 class Validation {
   String validateMobile(String value) {
     if (value.length > 3) {
       String pre = value.substring(0, 2);
       if (pre == '07') {
         String patttern = r'(^[0-9]*$)';
-        RegExp regExp = new RegExp(patttern);
+        RegExp regExp = RegExp(patttern);
         if (value.length == 0) {
           return "Mobile is Required";
         } else if (value.length != 10) {
@@ -23,7 +25,7 @@ class Validation {
 
   String validatePhone(String value) {
     String patttern = r'(^[0-9]*$)';
-    RegExp regExp = new RegExp(patttern);
+    RegExp regExp = RegExp(patttern);
     if (value.length == 0) {
       return "Telephone is Required";
     } else if (value.length != 10) {
@@ -37,7 +39,7 @@ class Validation {
 
   String validateFax(String value) {
     String patttern = r'(^[0-9]*$)';
-    RegExp regExp = new RegExp(patttern);
+    RegExp regExp = RegExp(patttern);
     if (value.length == 0) {
       return value;
     } else if (value.length != 10) {
@@ -52,7 +54,7 @@ class Validation {
   String validatePassword(String value) {
     String pattern =
         r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
-    RegExp regExp = new RegExp(pattern);
+    RegExp regExp = RegExp(pattern);
     if (value.length == 0) {
       return "Password can't be Empty ";
     } else if (!regExp.hasMatch(value)) {
@@ -98,7 +100,7 @@ class Validation {
       // status = false;
       // return 'lll';
     } else if (value.length == 10 || value.length == 12) {
-      RegExp regex = new RegExp(pattern);
+      RegExp regex = RegExp(pattern);
       if (!regex.hasMatch(value)) {
         return 'Please enter correct NIC number';
       } else {
@@ -128,7 +130,7 @@ class Validation {
         return " Value can't be 0";
       } else {
         String pattern = r'[!@#<>?":_`~;[\]\\|=+)(*&^%0-9-]';
-        RegExp regExp = new RegExp(pattern);
+        RegExp regExp = RegExp(pattern);
         if (!regExp.hasMatch(value)) {
           return 'Please enter correct number';
         }

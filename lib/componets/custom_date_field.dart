@@ -6,13 +6,13 @@ import '../utils/colors.dart';
 
 class CustomDateField extends StatefulWidget {
   CustomDateField({
-    Key? key,
+    super.key,
     this.width,
     required this.lable,
     this.ontap,
     this.validator,
     required this.dateValue,
-  }) : super(key: key);
+  });
   String? Function(String?)? validator;
   final double? width;
   final String dateValue;
@@ -36,7 +36,7 @@ class _CustomDateFieldState extends State<CustomDateField> {
               children: [
                 Text(
                   widget.lable,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
                   ),
@@ -44,7 +44,7 @@ class _CustomDateFieldState extends State<CustomDateField> {
               ],
             ),
           ),
-          SizedBox(height: 5),
+          const SizedBox(height: 5),
           InkWell(
             onTap: widget.ontap,
             child: Container(
@@ -66,12 +66,12 @@ class _CustomDateFieldState extends State<CustomDateField> {
                   children: [
                     Text(
                       widget.dateValue,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Icon(
+                    const Icon(
                       Icons.today,
                       size: 30,
                       color: kBlack,

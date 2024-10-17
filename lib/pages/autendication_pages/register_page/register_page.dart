@@ -1,6 +1,7 @@
 import 'package:beetracker/pages/autendication_pages/login_page/login_page.dart';
 import 'package:flutter/material.dart';
 
+import '../../../componets/custom_background.dart';
 import '../../../componets/custom_button.dart';
 import '../../../componets/custom_input.dart';
 import '../../../componets/custom_logowithbg.dart';
@@ -26,16 +27,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     return Scaffold(
       body: Stack(
         children: [
-          SizedBox(
-            width: size.width,
-            height: size.height,
-            child: Image.asset(
-              "assets/images/bg.jpg",
-
-              // width: 400,
-              fit: BoxFit.cover,
-            ),
-          ),
+          CustomBG(size: size),
           Center(
             child: Padding(
               padding: const EdgeInsets.all(8.0),

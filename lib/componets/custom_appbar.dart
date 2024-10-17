@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import '../utils/colors.dart';
 import 'custom_text.dart';
@@ -29,111 +28,45 @@ class _CustomAppBarState extends State<CustomAppBar> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     width = size.width;
-    return Consumer(
-      builder: (context, value, child) {
-        return AppBar(
-          centerTitle: true,
-          leading: widget.isHome != null
-              ? IconButton(
-                  icon: const Icon(Icons.menu),
-                  onPressed: () {},
-                )
-              : null,
-          title: CustomText(
-            text: widget.title != null ? widget.title! : "D2D",
-            color: kWhite,
-            fontWeight: FontWeight.bold,
-          ),
-          iconTheme: const IconThemeData(
-            color: kWhite,
-          ),
-          actions: [
-            widget.needTranslate
-                ? PopupMenuButton<int>(
-                    icon: const Icon(Icons.language),
-                    onSelected: (val) {
-                      setState(() {});
-                    },
-                    itemBuilder: (context) => [
-                      const PopupMenuItem<int>(
-                        value: 0,
-                        child: Row(
-                          children: [
-                            Icon(
-                              Icons.translate,
-                              color: kMainColor,
-                            ),
-                            SizedBox(width: 20),
-                            CustomText(text: "English")
-                          ],
-                        ),
-                      ),
-                      const PopupMenuDivider(),
-                      const PopupMenuItem<int>(
-                        value: 1,
-                        child: Row(
-                          children: [
-                            Icon(
-                              Icons.translate,
-                              color: kMainColor,
-                            ),
-                            SizedBox(width: 20),
-                            CustomText(text: "Sinhala")
-                          ],
-                        ),
-                      ),
-                      const PopupMenuDivider(),
-                      const PopupMenuItem<int>(
-                        value: 2,
-                        child: Row(
-                          children: [
-                            Icon(
-                              Icons.translate,
-                              color: kMainColor,
-                            ),
-                            SizedBox(width: 20),
-                            CustomText(text: "Tamil")
-                          ],
-                        ),
-                      ),
-                    ],
-                  )
-                : const SizedBox(),
-            PopupMenuButton<int>(
-              // onSelected: (value) => onSelected(context, value),
-              itemBuilder: (context) => [
-                // const PopupMenuDivider(),
-                const PopupMenuItem<int>(
-                  value: 0,
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.logout,
-                        color: kMainColor,
-                      ),
-                      SizedBox(width: 20),
-                      CustomText(text: "Logout")
-                    ],
-                  ),
-                ),
-                const PopupMenuItem<int>(
-                  value: 1,
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.manage_accounts,
-                        color: kMainColor,
-                      ),
-                      SizedBox(width: 20),
-                      CustomText(text: "User Type")
-                    ],
-                  ),
-                ),
-              ],
+    return AppBar(
+      backgroundColor: appbarColor,
+      elevation: 5,
+      centerTitle: true,
+      leading: widget.isHome != null
+          ? IconButton(
+              icon: const Icon(Icons.menu),
+              onPressed: () {},
             )
+          : null,
+      title: CustomText(
+        text: widget.title != null ? widget.title! : "Bee Protector",
+        color: kWhite,
+        fontSize: 15,
+        fontWeight: FontWeight.bold,
+      ),
+      iconTheme: const IconThemeData(
+        color: kBlack,
+      ),
+      actions: [
+        PopupMenuButton<int>(
+          itemBuilder: (context) => [
+            // const PopupMenuDivider(),
+            const PopupMenuItem<int>(
+              value: 0,
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.logout,
+                    color: kMainColor,
+                  ),
+                  SizedBox(width: 20),
+                  CustomText(text: "Logout")
+                ],
+              ),
+            ),
           ],
-        );
-      },
+        )
+      ],
     );
   }
 }

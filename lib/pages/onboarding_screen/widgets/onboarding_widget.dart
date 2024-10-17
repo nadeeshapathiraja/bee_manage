@@ -44,7 +44,7 @@ class _OBWidgetState extends State<OBWidget> {
             style: const TextStyle(
               fontSize: 16,
               color: kBlack,
-              fontWeight: FontWeight.w900,
+              fontWeight: FontWeight.w500,
             ),
           )
         ],

@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:beetracker/pages/autendication_pages/login_page/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';

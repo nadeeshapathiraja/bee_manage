@@ -1,35 +1,14 @@
-import 'package:final_project/utils/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:skeletons/skeletons.dart';
-
-class CustomSvg extends StatelessWidget {
-  const CustomSvg({
-    Key? key,
-    required this.svgName,
-    this.color,
-  }) : super(key: key);
-
-  final String svgName;
-  final Color? color;
-
-  @override
-  Widget build(BuildContext context) {
-    return SvgPicture.asset(
-      Constants.iconAssets('$svgName.svg'),
-      color: color,
-    );
-  }
-}
 
 class CustomNetworkImage extends StatelessWidget {
   const CustomNetworkImage({
-    Key? key,
+    super.key,
     required this.url,
     this.width,
     this.height,
     this.fit,
-  }) : super(key: key);
+  });
 
   final String url;
   final double? width;
@@ -59,12 +38,12 @@ class CustomNetworkImage extends StatelessWidget {
 
 class CircularNetworkImage extends StatelessWidget {
   const CircularNetworkImage({
-    Key? key,
+    super.key,
     required this.url,
     this.width,
     this.height,
     this.fit = BoxFit.cover,
-  }) : super(key: key);
+  });
 
   final String url;
   final double? width;

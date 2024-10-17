@@ -1,13 +1,10 @@
 import 'package:beetracker/utils/colors.dart';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-
-
 class CustomPlainText extends StatelessWidget {
   const CustomPlainText({
-    Key? key,
+    super.key,
     required this.text,
     this.fontSize = 15,
     this.color = kBlack,
@@ -15,7 +12,7 @@ class CustomPlainText extends StatelessWidget {
     this.textAlign,
     this.maxLine = 1,
     this.textOverflow = TextOverflow.ellipsis,
-  }) : super(key: key);
+  });
 
   final String text;
   final int? maxLine;
@@ -43,7 +40,7 @@ class CustomPlainText extends StatelessWidget {
 
 class CustomSubTitle extends StatelessWidget {
   const CustomSubTitle({
-    Key? key,
+    super.key,
     required this.text,
     this.fontSize = 15,
     this.color = kBlack,
@@ -51,7 +48,7 @@ class CustomSubTitle extends StatelessWidget {
     this.textAlign,
     this.maxLine = 1,
     this.textOverflow = TextOverflow.ellipsis,
-  }) : super(key: key);
+  });
 
   final String text;
   final int? maxLine;
@@ -79,7 +76,7 @@ class CustomSubTitle extends StatelessWidget {
 
 class CustomTitle extends StatelessWidget {
   const CustomTitle({
-    Key? key,
+    super.key,
     required this.text,
     this.fontSize = 15,
     this.color = kBlack,
@@ -87,7 +84,7 @@ class CustomTitle extends StatelessWidget {
     this.textAlign,
     this.maxLine = 1,
     this.textOverflow = TextOverflow.ellipsis,
-  }) : super(key: key);
+  });
 
   final String text;
   final int? maxLine;
@@ -112,6 +109,3 @@ class CustomTitle extends StatelessWidget {
     );
   }
 }
-
-
-

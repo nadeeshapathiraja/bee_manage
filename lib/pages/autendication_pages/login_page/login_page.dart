@@ -2,6 +2,7 @@ import 'package:beetracker/pages/home_page/home_page.dart';
 import 'package:beetracker/utils/colors.dart';
 import 'package:flutter/material.dart';
 
+import '../../../componets/custom_background.dart';
 import '../../../componets/custom_button.dart';
 import '../../../componets/custom_input.dart';
 import '../../../componets/custom_logowithbg.dart';
@@ -29,16 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       body: Stack(
         children: [
-          SizedBox(
-            width: size.width,
-            height: size.height,
-            child: Image.asset(
-              "assets/images/bg.jpg",
-
-              // width: 400,
-              fit: BoxFit.cover,
-            ),
-          ),
+          CustomBG(size: size),
           Center(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
@@ -46,7 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    LogoWithBgWidget(),
+                    const LogoWithBgWidget(),
                     const CustomText(
                       text: "SignIn",
                       fontSize: 25,
@@ -155,4 +147,3 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
-

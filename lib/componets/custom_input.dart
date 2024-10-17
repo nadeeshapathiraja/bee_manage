@@ -42,7 +42,17 @@ class CustomInput extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 5),
-          SizedBox(
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              boxShadow: const [
+                BoxShadow(
+                  color: Colors.grey,
+                  offset: Offset(0, 0.5), //(x,y)
+                  blurRadius: 5,
+                ),
+              ],
+            ),
             height: 50,
             child: TextFormField(
               controller: controller,
@@ -59,17 +69,20 @@ class CustomInput extends StatelessWidget {
                   icon,
                   color: kBlack,
                 ),
-                suffixIcon: iconBtn,
                 enabledBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(width: 1),
+                  borderSide: const BorderSide(color: kMainColor, width: 1),
                   borderRadius: BorderRadius.circular(20),
                 ),
                 border: OutlineInputBorder(
-                  borderSide: const BorderSide(color: kGrey, width: 1),
+                  borderSide: const BorderSide(color: kMainColor, width: 1),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: const BorderSide(color: kBlue, width: 2),
                   borderRadius: BorderRadius.circular(20),
                 ),
                 filled: true,
-                fillColor: Colors.white70,
+                fillColor: Colors.white.withOpacity(0.8),
               ),
             ),
           ),

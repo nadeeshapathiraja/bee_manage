@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../componets/custom_background.dart';
 import '../../../componets/custom_button.dart';
 import '../../../componets/custom_logowithbg.dart';
 import '../../../componets/custom_text.dart';
@@ -25,16 +26,7 @@ class _FrogotPasswordScreenState extends State<FrogotPasswordScreen> {
     return Scaffold(
       body: Stack(
         children: [
-          SizedBox(
-            width: size.width,
-            height: size.height,
-            child: Image.asset(
-              "assets/images/bg.jpg",
-
-              // width: 400,
-              fit: BoxFit.cover,
-            ),
-          ),
+          CustomBG(size: size),
           Center(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
@@ -103,3 +95,4 @@ class _FrogotPasswordScreenState extends State<FrogotPasswordScreen> {
     );
   }
 }
+

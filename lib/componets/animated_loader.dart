@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api, use_super_parameters, deprecated_member_use
+
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -26,19 +28,19 @@ class _AnimatedcustomeLoaderState extends State<AnimatedcustomeLoader>
   void initState() {
     super.initState();
     controller =
-        AnimationController(vsync: this, duration: Duration(seconds: 5));
+        AnimationController(vsync: this, duration: const Duration(seconds: 5));
     animation_rotation = Tween<double>(begin: 0.0, end: 1.0).animate(
         CurvedAnimation(
             parent: controller,
-            curve: Interval(0.0, 1.0, curve: Curves.linear)));
+            curve: const Interval(0.0, 1.0, curve: Curves.linear)));
     animation_radius_in = Tween<double>(begin: 1.0, end: 0.0).animate(
         CurvedAnimation(
             parent: controller,
-            curve: Interval(0.75, 1.0, curve: Curves.elasticIn)));
+            curve: const Interval(0.75, 1.0, curve: Curves.elasticIn)));
     animation_radius_out = Tween<double>(begin: 0.0, end: 1.0).animate(
         CurvedAnimation(
             parent: controller,
-            curve: Interval(0.0, 0.25, curve: Curves.elasticInOut)));
+            curve: const Interval(0.0, 0.25, curve: Curves.elasticInOut)));
     controller.addListener(() {
       setState(() {
         if (controller.value >= 0.75 && controller.value <= 1.0) {
@@ -60,7 +62,7 @@ class _AnimatedcustomeLoaderState extends State<AnimatedcustomeLoader>
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       //color: Colors.white,
       width: 100.00,
       height: 100,
@@ -69,13 +71,13 @@ class _AnimatedcustomeLoaderState extends State<AnimatedcustomeLoader>
         turns: animation_rotation,
         child: Stack(
           children: [
-            Dot(
+            const Dot(
               radius: 30.0,
               color: Colors.black12,
             ),
             Transform.translate(
               offset: Offset(radius * cos(pi / 4), radius * sin(pi / 4)),
-              child: Dot(
+              child: const Dot(
                 radius: 5.0,
                 color: Colors.red,
               ),
@@ -83,7 +85,7 @@ class _AnimatedcustomeLoaderState extends State<AnimatedcustomeLoader>
             Transform.translate(
               offset:
                   Offset(radius * cos(2 * pi / 4), radius * sin(2 * pi / 4)),
-              child: Dot(
+              child: const Dot(
                 radius: 5.0,
                 color: Colors.red,
               ),
@@ -91,7 +93,7 @@ class _AnimatedcustomeLoaderState extends State<AnimatedcustomeLoader>
             Transform.translate(
               offset:
                   Offset(radius * cos(3 * pi / 4), radius * sin(3 * pi / 4)),
-              child: Dot(
+              child: const Dot(
                 radius: 5.0,
                 color: Colors.red,
               ),
@@ -99,7 +101,7 @@ class _AnimatedcustomeLoaderState extends State<AnimatedcustomeLoader>
             Transform.translate(
               offset:
                   Offset(radius * cos(4 * pi / 4), radius * sin(4 * pi / 4)),
-              child: Dot(
+              child: const Dot(
                 radius: 5.0,
                 color: Colors.red,
               ),
@@ -107,7 +109,7 @@ class _AnimatedcustomeLoaderState extends State<AnimatedcustomeLoader>
             Transform.translate(
               offset:
                   Offset(radius * cos(5 * pi / 4), radius * sin(5 * pi / 4)),
-              child: Dot(
+              child: const Dot(
                 radius: 5.0,
                 color: Colors.red,
               ),
@@ -115,7 +117,7 @@ class _AnimatedcustomeLoaderState extends State<AnimatedcustomeLoader>
             Transform.translate(
               offset:
                   Offset(radius * cos(6 * pi / 4), radius * sin(6 * pi / 4)),
-              child: Dot(
+              child: const Dot(
                 radius: 5.0,
                 color: Colors.red,
               ),
@@ -123,7 +125,7 @@ class _AnimatedcustomeLoaderState extends State<AnimatedcustomeLoader>
             Transform.translate(
               offset:
                   Offset(radius * cos(7 * pi / 4), radius * sin(7 * pi / 4)),
-              child: Dot(
+              child: const Dot(
                 radius: 5.0,
                 color: Colors.red,
               ),
@@ -131,7 +133,7 @@ class _AnimatedcustomeLoaderState extends State<AnimatedcustomeLoader>
             Transform.translate(
               offset:
                   Offset(radius * cos(8 * pi / 4), radius * sin(8 * pi / 4)),
-              child: Dot(
+              child: const Dot(
                 radius: 5.0,
                 color: Colors.red,
               ),
@@ -147,7 +149,8 @@ class Dot extends StatelessWidget {
   final double? radius;
   final Color? color;
 
-  Dot({
+  const Dot({
+    super.key,
     this.radius,
     this.color,
   });
@@ -156,9 +159,9 @@ class Dot extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        width: this.radius,
-        height: this.radius,
-        decoration: BoxDecoration(color: this.color, shape: BoxShape.circle),
+        width: radius,
+        height: radius,
+        decoration: BoxDecoration(color: color, shape: BoxShape.circle),
       ),
     );
   }
@@ -170,7 +173,7 @@ void showloadingMSG(BuildContext context, String message) async => showDialog(
     builder: (BuildContext context) {
       return AlertDialog(
         title: Text(message),
-        content: Container(
+        content: const SizedBox(
           width: 150,
           height: 50,
           child: Center(
@@ -187,7 +190,7 @@ void showloadingMSGActive(BuildContext context, String message) async =>
         builder: (BuildContext context) {
           return AlertDialog(
             title: Text(message),
-            content: Container(
+            content: const SizedBox(
               width: 150,
               height: 50,
               child: Center(
@@ -206,7 +209,7 @@ void showloadingMSGpermanet(BuildContext context, String message) async =>
           child: AlertDialog(
             backgroundColor: Colors.transparent,
             content: Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.all(Radius.circular(10))),
               width: MediaQuery.of(context).size.width * 0.8,
@@ -215,12 +218,12 @@ void showloadingMSGpermanet(BuildContext context, String message) async =>
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
                   children: [
-                    CircularProgressIndicator(),
+                    const CircularProgressIndicator(),
                     Padding(
                       padding: const EdgeInsets.only(left: 10, right: 5),
                       child: Text(
                         message,
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontStyle: FontStyle.normal,
                             fontWeight: FontWeight.bold),
                       ),
