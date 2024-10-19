@@ -1,9 +1,12 @@
 import 'package:beetracker/componets/custom_logowithbg.dart';
 import 'package:beetracker/componets/custom_text.dart';
+import 'package:beetracker/provider/main_page_provider.dart';
 import 'package:beetracker/utils/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../data/side_menu_data.dart';
+import '../utils/responsive.dart';
 
 class SideMenu extends StatefulWidget {
   const SideMenu({super.key});
@@ -37,7 +40,10 @@ class _SideMenuState extends State<SideMenu> {
               shrinkWrap: true,
               itemCount: sidemenudata.sideMenuList.length,
               itemBuilder: (BuildContext context, int index) {
-                return _sideMenuList(sidemenudata, index);
+                return _sideMenuList(
+                  sidemenudata,
+                  index,
+                );
               },
             ),
           ],
@@ -47,40 +53,58 @@ class _SideMenuState extends State<SideMenu> {
   }
 
   Widget _sideMenuList(SideMenuData sideMenuListData, int index) {
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          selectedIndex = index;
-        });
-      },
-      child: Container(
-        height: 60,
-        margin: const EdgeInsets.symmetric(
-            // vertical: 10,
-            ),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(6),
-          color: selectedIndex == index ? kMainColor : Colors.transparent,
-        ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-          child: Row(
-            children: [
-              Icon(
-                sideMenuListData.sideMenuList[index].icon,
-                color: selectedIndex == index ? kWhite : kGrey,
-              ),
-              const SizedBox(width: 25),
-              Text(
-                sideMenuListData.sideMenuList[index].title,
-                style: TextStyle(
-                  color: selectedIndex == index ? kWhite : kGrey,
+    return Consumer<MainPageProvider>(
+      builder: (context, value, child) {
+        return GestureDetector(
+          onTap: () {
+            setState(() {
+              selectedIndex = index;
+            });
+            value.setPage(sideMenuListData.sideMenuList[index].title);
+            if (!Responsive.isDesktop(context)) {
+              Navigator.of(context).pop();
+            }
+          },
+          child: Container(
+            height: 60,
+            margin: const EdgeInsets.symmetric(
+                // vertical: 10,
                 ),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(6),
+              color: value.currentPage ==
+                      sideMenuListData.sideMenuList[index].title
+                  ? kMainColor
+                  : Colors.transparent,
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              child: Row(
+                children: [
+                  Icon(
+                    sideMenuListData.sideMenuList[index].icon,
+                    color: value.currentPage ==
+                            sideMenuListData.sideMenuList[index].title
+                        ? kWhite
+                        : Colors.black54,
+                  ),
+                  const SizedBox(width: 25),
+                  Text(
+                    sideMenuListData.sideMenuList[index].title,
+                    style: TextStyle(
+                      color: value.currentPage ==
+                              sideMenuListData.sideMenuList[index].title
+                          ? kWhite
+                          : Colors.black54,
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

@@ -1,4 +1,4 @@
-import 'package:beetracker/pages/home_page/home_page.dart';
+import 'package:beetracker/pages/main_pages/Main_screen.dart';
 import 'package:beetracker/utils/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -106,7 +106,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       color: kMainColor,
                       onTap: () async {
                         UtilFunctions.pushRemoveNavigation(
-                            context, const HomeScreen());
+                          context,
+                          const MainScren(),
+                        );
                       },
                     ),
                     const SizedBox(height: 20),
