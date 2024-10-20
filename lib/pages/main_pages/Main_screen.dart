@@ -1,9 +1,13 @@
 import 'package:beetracker/componets/custom_appbar.dart';
+import 'package:beetracker/componets/custom_text.dart';
+import 'package:beetracker/pages/hive_pages/add_hive.dart';
 import 'package:beetracker/pages/main_pages/community_screen/community_page.dart';
 import 'package:beetracker/pages/main_pages/home_page/home_page.dart';
 import 'package:beetracker/pages/main_pages/profile_screen/profile_page.dart';
 import 'package:beetracker/pages/main_pages/shop_screen/shop_page.dart';
 import 'package:beetracker/provider/main_page_provider.dart';
+import 'package:beetracker/utils/colors.dart';
+import 'package:beetracker/utils/util_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
@@ -34,6 +38,44 @@ class _MainScrenState extends State<MainScren> {
               child: SideMenu(),
             )
           : null,
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.all(10),
+        child: GestureDetector(
+          onTap: () {
+            UtilFunctions.navigateTo(
+              context,
+              const AddHiveDetails(),
+            );
+          },
+          child: Container(
+            width: 120,
+            height: 40,
+            decoration: BoxDecoration(
+              color: appbarColor,
+              borderRadius: BorderRadius.circular(20),
+              boxShadow: const [
+                BoxShadow(
+                  color: Colors.grey,
+                  offset: Offset(0.0, 1.0), //(x,y)
+                  blurRadius: 6.0,
+                ),
+              ],
+            ),
+            child: const Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(Icons.add, size: 25, weight: 100),
+                SizedBox(width: 10),
+                CustomText(
+                  text: "Add",
+                  fontWeight: FontWeight.w900,
+                  fontSize: 14,
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
       body: Consumer<MainPageProvider>(
         builder: (context, mainPageProvider, child) {
           // Fetch the current selected page from the provider

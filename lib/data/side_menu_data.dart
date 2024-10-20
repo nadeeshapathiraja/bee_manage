@@ -30,6 +30,11 @@ class SideMenuData {
       widget: const CommunityScreen(),
     ),
     SideMenuModel(
+      icon: Icons.notifications,
+      title: "Notifications",
+      widget: const CommunityScreen(),
+    ),
+    SideMenuModel(
       icon: Icons.settings,
       title: "Settings",
       widget: const SettingsScreen(),
