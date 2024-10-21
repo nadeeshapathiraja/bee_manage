@@ -18,10 +18,11 @@ class CustomFormField extends StatelessWidget {
     this.prefixIcon,
     this.hintText,
     this.fontsize = 14,
+    this.height = 50,
   });
 
   final String lable;
-  final int lines;
+  final int? lines;
   final int? lenth;
   final TextEditingController controller;
   final bool readonly;
@@ -30,6 +31,7 @@ class CustomFormField extends StatelessWidget {
   final IconData? prefixIcon;
   final String? hintText;
   double fontsize;
+  double? height;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +45,7 @@ class CustomFormField extends StatelessWidget {
               CustomText(
                 text: lable,
                 fontSize: fontsize,
-                fontWeight: FontWeight.w400,
+                fontWeight: FontWeight.bold,
               ),
             ],
           ),
@@ -59,7 +61,7 @@ class CustomFormField extends StatelessWidget {
                 ),
               ],
             ),
-            height: 50,
+            height: height,
             child: Row(
               children: [
                 Expanded(

@@ -12,14 +12,12 @@ class DisplayHiveDetails extends StatefulWidget {
 class _DisplayHiveDetailsState extends State<DisplayHiveDetails> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const CustomAppBar(
+    return const Scaffold(
+      appBar: CustomAppBar(
         title: "View Hive",
       ),
-      body: Container(
-        child: const Center(
-          child: Text("View details"),
-        ),
+      body: Center(
+        child: Text("View details"),
       ),
     );
   }

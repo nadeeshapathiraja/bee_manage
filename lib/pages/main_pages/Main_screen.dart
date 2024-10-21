@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:beetracker/componets/custom_appbar.dart';
 import 'package:beetracker/componets/custom_text.dart';
 import 'package:beetracker/pages/hive_pages/add_hive.dart';
