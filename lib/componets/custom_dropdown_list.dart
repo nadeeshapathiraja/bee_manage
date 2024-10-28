@@ -11,11 +11,13 @@ class CustomSearchDropdown extends StatefulWidget {
     required this.items,
     this.selectedValue,
     this.textEditingController,
+    required this.title, required Null Function(dynamic value) onChanged,
   });
   final double? size;
   final List<String> items;
   final String? selectedValue;
   final TextEditingController? textEditingController;
+  final String title;
 
   @override
   State<CustomSearchDropdown> createState() => _CustomSearchDropdownState();
@@ -36,13 +38,18 @@ class _CustomSearchDropdownState extends State<CustomSearchDropdown> {
       padding: const EdgeInsets.all(10),
       child: SizedBox(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          // crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const CustomText(
-              text: "Hive Size",
-              textAlign: TextAlign.start,
-              fontSize: 14,
-              fontWeight: FontWeight.bold,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                CustomText(
+                  text: widget.title,
+                  textAlign: TextAlign.start,
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                ),
+              ],
             ),
             const SizedBox(height: 5),
             Container(
@@ -63,7 +70,7 @@ class _CustomSearchDropdownState extends State<CustomSearchDropdown> {
                 child: DropdownButton2<String>(
                   isExpanded: true,
                   hint: Text(
-                    'Select Item',
+                    'Select choice',
                     style: TextStyle(
                       fontSize: 14,
                       color: Theme.of(context).hintColor,
@@ -118,7 +125,7 @@ class _CustomSearchDropdownState extends State<CustomSearchDropdown> {
                             horizontal: 10,
                             vertical: 8,
                           ),
-                          hintText: 'Search for an item...',
+                          hintText: 'Search...',
                           hintStyle: const TextStyle(fontSize: 12),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(8),

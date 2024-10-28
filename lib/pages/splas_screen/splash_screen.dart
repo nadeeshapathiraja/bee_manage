@@ -1,6 +1,8 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:animate_do/animate_do.dart';
+import 'package:beetracker/pages/autendication_pages/login_page/login_page.dart';
+import 'package:beetracker/services/user_services.dart';
 import 'package:flutter/material.dart';
 
 import '../onboarding_screen/onboarding_screen.dart';
@@ -18,14 +20,25 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Future.delayed(
       const Duration(seconds: 3),
-      () {
-        Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const OnBoardingScreen(),
-          ),
-          (route) => false,
-        );
+      () async {
+        bool beforeUsed = await UserServices.getProofBeforeuse();
+        if (beforeUsed) {
+          Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const LoginScreen(),
+            ),
+            (route) => false,
+          );
+        } else {
+          Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const OnBoardingScreen(),
+            ),
+            (route) => false,
+          );
+        }
       },
     );
   }

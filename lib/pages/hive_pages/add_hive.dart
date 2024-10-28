@@ -1,7 +1,11 @@
 import 'package:beetracker/componets/custom_appbar.dart';
+import 'package:beetracker/componets/custom_button.dart';
+import 'package:beetracker/componets/custom_date_field.dart';
 import 'package:beetracker/componets/custom_dropdown_list.dart';
 import 'package:beetracker/componets/custom_text.dart';
+import 'package:beetracker/utils/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import '../../../componets/custom_background.dart';
 import '../../componets/custom_form_field.dart';
@@ -14,31 +18,41 @@ class AddHiveDetails extends StatefulWidget {
 }
 
 class _AddHiveDetailsState extends State<AddHiveDetails> {
-  final _email = TextEditingController();
+  final TextEditingController hiveNameController = TextEditingController();
+  final TextEditingController mainLocationController = TextEditingController();
+  final TextEditingController addressController = TextEditingController();
+  final TextEditingController motherHiveController = TextEditingController();
+  final TextEditingController notesController = TextEditingController();
 
-  final List<String> items = [
-    'A_Item1',
-    'A_Item2',
-    'A_Item3',
-    'A_Item4',
-    'B_Item1',
-    'B_Item2',
-    'B_Item3',
-    'B_Item4',
-  ];
+  final List<String> hiveTypes = ['Langstroth', 'Top-bar'];
+  final List<String> frameCounts =
+      List.generate(50, (index) => (index + 1).toString());
 
-  String? selectedValue;
-  final TextEditingController textEditingController = TextEditingController();
+  final List<String> conditions = ['Good', 'Bad', 'Moderate', 'Sacbof Virus'];
+  final List<String> strengths = ['Weak', 'Moderate', 'Strong'];
+
+  DateTime currentDate = DateTime.now();
+  DateTime? startDatetime = DateTime.now();
+
+  String? selectedHiveType;
+  String? selectedFrameCount;
+  String? selectedCondition;
+  String? selectedStrength;
 
   @override
   void dispose() {
-    textEditingController.dispose();
+    hiveNameController.dispose();
+    mainLocationController.dispose();
+    addressController.dispose();
+    motherHiveController.dispose();
+    notesController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+
     return Scaffold(
       appBar: const CustomAppBar(),
       body: Stack(
@@ -46,34 +60,139 @@ class _AddHiveDetailsState extends State<AddHiveDetails> {
           CustomBG(size: size),
           Center(
             child: SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  const CustomText(text: "Add Hive Details"),
+                  const SizedBox(height: 5),
+                  const CustomText(
+                    text: "Add Hive Details",
+                    fontSize: 18,
+                    fontWeight: FontWeight.w900,
+                  ),
+                  const SizedBox(height: 10),
                   CustomFormField(
                     lable: "Hive Name",
-                    controller: _email,
+                    controller: hiveNameController,
                   ),
                   CustomFormField(
                     lable: "Hive Main Location",
-                    controller: _email,
+                    controller: mainLocationController,
                   ),
                   CustomFormField(
                     lable: "Hive Address",
                     lines: 3,
                     height: 100,
-                    controller: _email,
+                    controller: addressController,
+                  ),
+                  CustomFormField(
+                    lable: "Mother Hive",
+                    controller: motherHiveController,
+                  ),
+                  CustomDateField(
+                    lable: "Start Date",
+                    dateValue: startDatetime != null
+                        ? DateFormat('dd-MMM-yyyy').format(startDatetime!)
+                        : DateFormat('dd-MMM-yyyy').format(currentDate),
+                    ontap: () async {
+                      DateTime? selectedDate = await showDatePicker(
+                        context: context,
+                        initialDate: currentDate,
+                        firstDate: DateTime(2000),
+                        lastDate: DateTime.now(),
+                      );
+                      if (selectedDate != null) {
+                        setState(() {
+                          startDatetime = selectedDate;
+                        });
+                      }
+                    },
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      CustomSearchDropdown(
+                        items: hiveTypes,
+                        size: size.width * 0.46,
+                        selectedValue: selectedHiveType,
+                        title: "Hive Type",
+                        onChanged: (value) {
+                          setState(() {
+                            selectedHiveType = value;
+                          });
+                        },
+                      ),
+                      CustomSearchDropdown(
+                        items: frameCounts,
+                        size: size.width * 0.41,
+                        selectedValue: selectedFrameCount,
+                        title: "Frame Count",
+                        onChanged: (value) {
+                          setState(() {
+                            selectedFrameCount = value;
+                          });
+                        },
+                      ),
+                    ],
                   ),
                   CustomSearchDropdown(
-                    items: items,
-                    size: size.width,
-                    selectedValue: selectedValue,
+                    items: strengths,
+                    size: size.width * 0.9,
+                    selectedValue: selectedStrength,
+                    title: "Colony Strength",
+                    onChanged: (value) {
+                      setState(() {
+                        selectedStrength = value;
+                      });
+                    },
+                  ),
+                  CustomSearchDropdown(
+                    items: conditions,
+                    size: size.width * 0.9,
+                    selectedValue: selectedCondition,
+                    title: "Current Condition",
+                    onChanged: (value) {
+                      setState(() {
+                        selectedCondition = value;
+                      });
+                    },
                   ),
                   CustomFormField(
-                    lable: "Hive Address",
+                    lable: "Notes",
                     lines: 3,
                     height: 100,
-                    controller: _email,
+                    controller: notesController,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      CustomButton(
+                        onTap: () {
+                          hiveNameController.clear();
+                          mainLocationController.clear();
+                          addressController.clear();
+                          motherHiveController.clear();
+                          notesController.clear();
+                          setState(() {
+                            startDatetime = currentDate;
+                            selectedHiveType = null;
+                            selectedFrameCount = null;
+                            selectedStrength = null;
+                            selectedCondition = null;
+                          });
+                        },
+                        text: "Clear",
+                        width: size.width * 0.44,
+                        color: kRed,
+                      ),
+                      CustomButton(
+                        onTap: () {
+                          // Add save logic here
+                        },
+                        text: "Save",
+                        width: size.width * 0.44,
+                      ),
+                    ],
                   ),
                 ],
               ),
