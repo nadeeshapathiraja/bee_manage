@@ -14,21 +14,96 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    // final size = MediaQuery.of(context).size;
+    final size = MediaQuery.of(context).size;
     return Padding(
-      padding: const EdgeInsets.all(10),
+      padding: const EdgeInsets.all(5),
       child: OrientationBuilder(
         builder: (context, orientation) {
-          return GridView.builder(
-            itemCount: 15,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: orientation == Orientation.portrait ? 2 : 3,
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
-            ),
-            itemBuilder: (BuildContext context, int index) {
-              return const HiveCard();
-            },
+          return Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(10),
+                child: Container(
+                  width: size.width,
+                  decoration: BoxDecoration(
+                    color: kWhite.withOpacity(0.8),
+                    borderRadius: BorderRadius.circular(20),
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Colors.grey,
+                        offset: Offset(0.0, 1.0), //(x,y)
+                        blurRadius: 6.0,
+                      ),
+                    ],
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 15, vertical: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Flexible(
+                          flex: 1,
+                          fit: FlexFit.tight,
+                          child: Column(
+                            children: [
+                              CustomText(
+                                text: "Total Hives",
+                                fontSize: 16,
+                                fontWeight: FontWeight.w900,
+                              ),
+                              Text(
+                                "5",
+                                style: TextStyle(
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.w900,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          width: 2,
+                          height: 60,
+                          color: Colors.black,
+                        ),
+                        const Flexible(
+                          flex: 1,
+                          fit: FlexFit.tight,
+                          child: Column(children: [
+                            CustomText(
+                              text: "Today Inspection",
+                              fontSize: 16,
+                              fontWeight: FontWeight.w900,
+                            ),
+                            Text(
+                              "2",
+                              style: TextStyle(
+                                fontSize: 25,
+                                fontWeight: FontWeight.w900,
+                              ),
+                            ),
+                          ]),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: GridView.builder(
+                  itemCount: 5,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: orientation == Orientation.portrait ? 2 : 3,
+                    crossAxisSpacing: 10,
+                    mainAxisSpacing: 10,
+                  ),
+                  itemBuilder: (BuildContext context, int index) {
+                    return const HiveCard();
+                  },
+                ),
+              ),
+            ],
           );
         },
       ),
@@ -54,15 +129,26 @@ class HiveCard extends StatelessWidget {
         decoration: BoxDecoration(
           color: kWhite.withOpacity(0.9),
           borderRadius: BorderRadius.circular(20),
+          boxShadow: const [
+            BoxShadow(
+              color: Colors.grey,
+              offset: Offset(0.0, 1.0), //(x,y)
+              blurRadius: 6.0,
+            ),
+          ],
         ),
         child: Column(
           children: [
+            const CustomText(
+              text: "Hive 1",
+              fontWeight: FontWeight.bold,
+            ),
             Padding(
               padding: const EdgeInsets.all(5),
-              child: Container(
-                decoration: BoxDecoration(
-                  border: Border.all(),
-                ),
+              child: SizedBox(
+                // decoration: BoxDecoration(
+                //   border: Border.all(),
+                // ),
                 width: 100,
                 height: 100,
                 child: Image.asset(
@@ -70,10 +156,6 @@ class HiveCard extends StatelessWidget {
                 ),
               ),
             ),
-            const CustomText(
-              text: "Hive 1",
-              fontWeight: FontWeight.bold,
-            )
           ],
         ),
       ),
