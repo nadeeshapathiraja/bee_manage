@@ -261,105 +261,124 @@ class HiveCard extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 3),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 3),
-              child: Container(
-                width: size.width,
-                height: size.height * 0.065,
-                decoration: BoxDecoration(
-                  color: const Color.fromARGB(255, 253, 227, 140),
-                  borderRadius: BorderRadius.circular(5),
-                ),
-                child: Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(5),
-                      child: Column(
+            Row(
+              children: [
+                Flexible(
+                  flex: 2,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 3),
+                    child: Container(
+                      width: size.width * 0.5,
+                      height: size.height * 0.065,
+                      decoration: BoxDecoration(
+                        color: const Color.fromARGB(255, 253, 227, 140),
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      child: Row(
                         children: [
-                          const Center(
-                            child: CustomText(
-                              text: "Queen",
-                              fontSize: 8,
-                              fontWeight: FontWeight.bold,
+                          Padding(
+                            padding: const EdgeInsets.all(5),
+                            child: Column(
+                              children: [
+                                const Center(
+                                  child: CustomText(
+                                    text: "Queen",
+                                    fontSize: 8,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 25,
+                                  width: 25,
+                                  child: Image.asset(
+                                    'assets/images/queen.png',
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
-                          SizedBox(
+                          Container(
+                            width: 1,
                             height: 25,
-                            width: 25,
-                            child: Image.asset(
-                              'assets/images/queen.png',
-                            ),
+                            color: Colors.black,
                           ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      width: 1,
-                      height: 20,
-                      color: Colors.black,
-                    ),
-                    Flexible(
-                      flex: 1,
-                      fit: FlexFit.tight,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          const Center(
-                            child: CustomText(
-                              text: "Health",
-                              fontSize: 10,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Center(
+                          Flexible(
+                            flex: 1,
+                            fit: FlexFit.tight,
                             child: Container(
-                              decoration: const BoxDecoration(
-                                color: Color.fromARGB(255, 243, 247, 176),
-                              ),
-                              child: const Padding(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: 5,
-                                  vertical: 2,
-                                ),
-                                child: CustomText(
-                                  text: "Good",
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                              child: const Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Center(
+                                    child: CustomText(
+                                      text: "Marked",
+                                      fontSize: 8,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  SizedBox(height: 2),
+                                  Icon(
+                                    Icons.check_box,
+                                    size: 20,
+                                    color: kGreen,
+                                  ),
+                                ],
                               ),
                             ),
                           ),
                         ],
                       ),
+                      // child: ,
                     ),
-                    const Flexible(
-                      flex: 1,
-                      fit: FlexFit.tight,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Center(
-                            child: CustomText(
-                              text: "Marked",
-                              fontSize: 10,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Icon(
-                            Icons.check_box,
-                            size: 20,
-                            color: kGreen,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
-                // child: ,
-              ),
-            )
+                Flexible(
+                  flex: 1,
+                  fit: FlexFit.tight,
+                  child: Container(
+                    width: size.width * 0.4,
+                    height: size.height * 0.065,
+                    decoration: BoxDecoration(
+                      color: const Color.fromARGB(255, 253, 227, 140),
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        const Center(
+                          child: CustomText(
+                            text: "Health",
+                            fontSize: 8,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(height: 2),
+                        Center(
+                          child: Container(
+                            decoration: const BoxDecoration(
+                              color: Color.fromARGB(255, 243, 247, 176),
+                            ),
+                            child: const Padding(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 5,
+                                vertical: 2,
+                              ),
+                              child: CustomText(
+                                text: "Good",
+                                fontSize: 10,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
       ),

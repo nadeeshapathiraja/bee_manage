@@ -4,9 +4,11 @@ class CustomBG extends StatelessWidget {
   const CustomBG({
     super.key,
     required this.size,
+    this.link = "assets/images/bg.jpg",
   });
 
   final Size size;
+  final String link;
 
   @override
   Widget build(BuildContext context) {
@@ -14,9 +16,7 @@ class CustomBG extends StatelessWidget {
       width: size.width,
       height: size.height,
       child: Image.asset(
-        "assets/images/bg.jpg",
-
-        // width: 400,
+        link,
         fit: BoxFit.cover,
       ),
     );
