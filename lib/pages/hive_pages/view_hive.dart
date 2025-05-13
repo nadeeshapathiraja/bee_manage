@@ -1,4 +1,6 @@
+import 'package:bee_protect/componets/custom_background.dart';
 import 'package:flutter/material.dart';
+import 'package:nb_utils/nb_utils.dart';
 
 import '../../componets/custom_appbar.dart';
 import '../../componets/custom_button.dart';
@@ -19,76 +21,254 @@ class _DisplayHiveDetailsState extends State<DisplayHiveDetails> {
 
     return Scaffold(
         appBar: const CustomAppBar(
-          title: "Hive Manage",
+          title: "Hive Details",
         ),
         body: Stack(
           children: [
-            // CustomBG(
-            //   size: size,
-            //   link: "assets/images/bg2.jpg",
-            // ),
+            CustomBG(size: size),
             Padding(
               padding: const EdgeInsets.all(5),
               child: Column(
                 children: [
-                  const CustomText(
-                    text: "Hive Details",
-                    fontSize: 14,
-                    fontWeight: FontWeight.w900,
+                  5.height,
+                  CardDetails(
+                    color: lemonChiffon,
+                    size: size,
+                    widget: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 5),
+                      child: Column(
+                        children: [
+                          const CustomText(
+                            text: "Basic Hive Information",
+                            fontSize: 13,
+                            fontWeight: FontWeight.w900,
+                          ),
+                          const DataRow(
+                            title: "Hive Name",
+                            value: "Hive One",
+                          ),
+                          const DataRow(
+                            title: "Hive Location",
+                            value: "Mathugama",
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              CustomButton(
+                                color: kGrey,
+                                fontSize: 13,
+                                onTap: () {},
+                                text: "View More",
+                                height: 35,
+                                width: 120,
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
                   ),
+                  const SizedBox(height: 10),
                   CardDetails(
                     size: size,
-                    widget: const Padding(
-                      padding: EdgeInsets.all(5),
-                      child: Row(
+                    color: khaki,
+                    widget: Padding(
+                      padding: const EdgeInsets.all(5),
+                      child: Column(
                         children: [
-                          Flexible(
-                            flex: 1,
-                            fit: FlexFit.tight,
-                            child: CustomText(
-                              text: "Hive Name",
-                              fontSize: 11,
-                              fontWeight: FontWeight.bold,
-                            ),
+                          const CustomText(
+                            text: "Inspection & Maintenance",
+                            fontSize: 13,
+                            fontWeight: FontWeight.w900,
                           ),
-                          Flexible(
-                            flex: 2,
-                            fit: FlexFit.tight,
-                            child: Text(
-                              "Hive One",
-                              textAlign: TextAlign.start,
-                              style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w500,
+                          5.height,
+                          Row(
+                            children: [
+                              Flexible(
+                                flex: 1,
+                                fit: FlexFit.tight,
+                                child: CardDetails(
+                                  size: size,
+                                  color:
+                                      const Color.fromARGB(255, 124, 185, 233),
+                                  widget: const Padding(
+                                    padding: EdgeInsets.all(5),
+                                    child: Column(
+                                      children: [
+                                        CustomText(
+                                          text: "Last Inspection",
+                                          fontSize: 11,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                        Text(
+                                          "20/11/2024",
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
                               ),
-                            ),
+                              const SizedBox(width: 10),
+                              Flexible(
+                                flex: 1,
+                                fit: FlexFit.tight,
+                                child: Container(
+                                  width: size.width,
+                                  decoration: BoxDecoration(
+                                    color: Colors.amber,
+                                    borderRadius: BorderRadius.circular(5),
+                                  ),
+                                  child: CardDetails(
+                                    size: size,
+                                    widget: const Padding(
+                                      padding: EdgeInsets.all(5),
+                                      child: Column(
+                                        children: [
+                                          CustomText(
+                                            text: "Next Inspection",
+                                            fontSize: 11,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                          Text(
+                                            "31/11/2024",
+                                            style: TextStyle(
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          5.height,
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Expanded(
+                                child: CustomButton(
+                                  color: gray,
+                                  fontSize: 13,
+                                  onTap: () {},
+                                  text: "Inspection History",
+                                  height: 35,
+                                ),
+                              ),
+                              Expanded(
+                                child: CustomButton(
+                                  color: dodgerBlue,
+                                  fontSize: 13,
+                                  onTap: () {},
+                                  text: "New Inspection",
+                                  height: 35,
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),
                     ),
                   ),
-                  const SizedBox(height: 5),
-                  Padding(
-                    padding: const EdgeInsets.all(2),
-                    child: Row(
-                      children: [
-                        Flexible(
-                          flex: 1,
-                          fit: FlexFit.tight,
+                  10.height,
+                  Row(
+                    children: [
+                      Flexible(
+                        flex: 1,
+                        fit: FlexFit.tight,
+                        child: CardDetails(
+                          size: size,
+                          color: wheat,
+                          widget: Padding(
+                            padding: const EdgeInsets.all(5),
+                            child: Column(
+                              children: [
+                                const CustomText(
+                                  text: "Queen Information",
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.w900,
+                                ),
+                                SizedBox(
+                                  height: 40,
+                                  width: 40,
+                                  child: Image.asset(
+                                    'assets/images/queen.png',
+                                  ),
+                                ),
+                                const CardDataColumn(
+                                  title: "Queen Status",
+                                  value: "Present",
+                                ),
+                                const CardDataColumn(
+                                  title: "Queen Age",
+                                  value: "1" " Year",
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    const CardDataColumn(
+                                      title: "Queen Marked",
+                                      value: "Yes",
+                                      centerValue: true,
+                                    ),
+                                    Container(
+                                      height: 30.0,
+                                      width: 1.0,
+                                      color: gray,
+                                      margin: const EdgeInsets.symmetric(
+                                          horizontal: 5),
+                                    ),
+                                    const CardDataColumn(
+                                      title: "Marked Color",
+                                      value: "Yellow",
+                                      centerValue: true,
+                                    ),
+                                  ],
+                                ),
+                                CustomButton(
+                                  color: appbarColor,
+                                  fontSize: 13,
+                                  onTap: () {},
+                                  text: "Update",
+                                  height: 35,
+                                  width: 120,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 5),
+                      Flexible(
+                        flex: 1,
+                        fit: FlexFit.tight,
+                        child: Container(
+                          width: size.width,
+                          decoration: BoxDecoration(
+                            color: Colors.amber,
+                            borderRadius: BorderRadius.circular(5),
+                          ),
                           child: CardDetails(
                             size: size,
-                            color: const Color.fromARGB(255, 124, 185, 233),
                             widget: const Padding(
                               padding: EdgeInsets.all(5),
                               child: Column(
                                 children: [
                                   CustomText(
-                                    text: "Last Inspection",
-                                    fontSize: 11,
-                                    fontWeight: FontWeight.bold,
+                                    text: "Colony Information",
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.w900,
                                   ),
                                   Text(
-                                    "20/11/2024",
+                                    "31/11/2024",
                                     style: TextStyle(
                                       fontSize: 12,
                                       fontWeight: FontWeight.w500,
@@ -99,61 +279,214 @@ class _DisplayHiveDetailsState extends State<DisplayHiveDetails> {
                             ),
                           ),
                         ),
-                        const SizedBox(width: 5),
-                        Flexible(
-                          flex: 1,
-                          fit: FlexFit.tight,
-                          child: Container(
-                            width: size.width,
-                            decoration: BoxDecoration(
-                              color: Colors.amber,
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                            child: CardDetails(
-                              size: size,
-                              widget: const Padding(
-                                padding: EdgeInsets.all(5),
-                                child: Column(
-                                  children: [
-                                    CustomText(
-                                      text: "Next Inspection",
-                                      fontSize: 11,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                    Text(
-                                      "31/11/2024",
-                                      style: TextStyle(
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                  ],
+                      ),
+                    ],
+                  ),
+                  10.height,
+                  Row(
+                    children: [
+                      Flexible(
+                        flex: 1,
+                        fit: FlexFit.tight,
+                        child: CardDetails(
+                          size: size,
+                          color: const Color.fromARGB(255, 124, 185, 233),
+                          widget: const Padding(
+                            padding: EdgeInsets.all(5),
+                            child: Column(
+                              children: [
+                                CustomText(
+                                  text: "Health Monitoring",
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.w900,
                                 ),
+                                Text(
+                                  "20/11/2024",
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 5),
+                      Flexible(
+                        flex: 1,
+                        fit: FlexFit.tight,
+                        child: Container(
+                          width: size.width,
+                          decoration: BoxDecoration(
+                            color: Colors.amber,
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          child: CardDetails(
+                            size: size,
+                            widget: const Padding(
+                              padding: EdgeInsets.all(5),
+                              child: Column(
+                                children: [
+                                  CustomText(
+                                    text: "Feeding Records",
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.w900,
+                                  ),
+                                  Text(
+                                    "31/11/2024",
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                           ),
                         ),
-                      ],
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      CustomButton(
-                        color: kGrey,
-                        fontSize: 13,
-                        onTap: () {},
-                        text: "Inspection History",
-                        height: 30,
-                        width: 140,
                       ),
                     ],
-                  )
+                  ),
+                  10.height,
+                  CardDetails(
+                    color: lemonChiffon,
+                    size: size,
+                    widget: Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: Column(
+                        children: [
+                          const CustomText(
+                            text: "Production & Harvest",
+                            fontSize: 13,
+                            fontWeight: FontWeight.w900,
+                          ),
+                          const DataRow(
+                            title: "Hive Name",
+                            value: "Hive One",
+                          ),
+                          const DataRow(
+                            title: "Hive Location",
+                            value: "Mathugama",
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              CustomButton(
+                                color: kGrey,
+                                fontSize: 13,
+                                onTap: () {},
+                                text: "View More",
+                                height: 35,
+                                width: 120,
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
           ],
         ));
+  }
+}
+
+class CardDataColumn extends StatelessWidget {
+  final String title;
+  final String value;
+  final bool centerValue;
+  const CardDataColumn({
+    super.key,
+    required this.title,
+    this.value = "N/A",
+    this.centerValue = false,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 2),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              CustomText(
+                text: title,
+                fontSize: 10,
+                fontWeight: FontWeight.w900,
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: centerValue
+                ? MainAxisAlignment.center
+                : MainAxisAlignment.start,
+            children: [
+              Expanded(
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: whiteSmoke.withOpacity(0.6),
+                  ),
+                  child: Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 5, vertical: 1),
+                    child: CustomText(
+                      text: value,
+                      fontSize: 10,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class DataRow extends StatelessWidget {
+  final String title;
+  final String? value;
+  const DataRow({
+    super.key,
+    required this.title,
+    this.value,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Flexible(
+          flex: 1,
+          fit: FlexFit.tight,
+          child: CustomText(
+            text: title,
+            fontSize: 12,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const CustomText(text: ": "),
+        Flexible(
+          flex: 2,
+          fit: FlexFit.tight,
+          child: Text(
+            value ?? "N/A",
+            textAlign: TextAlign.start,
+            style: const TextStyle(
+              fontSize: 13,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        ),
+      ],
+    );
   }
 }
 
